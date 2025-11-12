@@ -5,19 +5,15 @@ export const Footer = () => {
 
   return (
     <footer className="border-t border-white/10 bg-black/20 backdrop-blur-md">
-      <div className="container mx-auto px-4 py-12 md:px-6 lg:px-8">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <div className="container mx-auto px-4 py-8 md:px-6 lg:px-8">
+        <div className="grid gap-8 md:grid-cols-2">
           <div>
             <h4 className="mb-4 text-lg font-semibold text-white">Let's build the next wave of AI experiences.</h4>
             <div className="space-y-2 text-sm text-gray-300">
               <p>
+                Email us at{" "}
                 <a href="mailto:hello@aboh.ai" className="hover:text-sky-400 transition-smooth">
                   hello@aboh.ai
-                </a>
-              </p>
-              <p>
-                <a href="tel:+15550102030" className="hover:text-sky-400 transition-smooth">
-                  +1 (555) 010-2030
                 </a>
               </p>
             </div>
@@ -29,10 +25,10 @@ export const Footer = () => {
             </h4>
             <nav className="space-y-2">
               <Link
-                to="/about"
+                to="/"
                 className="block text-sm text-gray-300 hover:text-sky-400 transition-smooth"
               >
-                About
+                Home
               </Link>
               <Link
                 to="/portfolio"
@@ -54,22 +50,18 @@ export const Footer = () => {
               </Link>
             </nav>
           </div>
-
-          <div>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gray-400">
-              Location
-            </h4>
-            <address className="text-sm not-italic text-gray-300">
-              255 Market Street, Suite 8<br />
-              San Francisco, CA 94105
-            </address>
-          </div>
         </div>
 
-        <div className="mt-12 border-t border-white/10 pt-8">
-          <p className="text-center text-sm text-gray-400">
-            &copy; {currentYear} ABOH. All rights reserved.
-          </p>
+        <div className="mt-8 border-t border-white/10 pt-6 space-y-3 text-center text-sm text-gray-400">
+          <p>&copy; {currentYear} ABOH. All rights reserved.</p>
+          <div className="flex flex-col items-center gap-2 text-gray-400 sm:flex-row sm:justify-center sm:gap-6">
+            <Link to="/privacy" className="hover:text-sky-400 transition-smooth">
+              Privacy Policy
+            </Link>
+            <Link to="/terms" className="hover:text-sky-400 transition-smooth">
+              Terms of Service
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

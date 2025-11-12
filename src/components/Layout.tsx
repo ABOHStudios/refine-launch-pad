@@ -1,8 +1,9 @@
-import { ReactNode } from 'react';
-import { Helmet } from 'react-helmet-async';
-import { Navigation } from './Navigation';
-import { Footer } from './Footer';
-import Beams from './Beams';
+import { ReactNode } from "react";
+import { Helmet } from "react-helmet-async";
+import { Navigation } from "./Navigation";
+import { Footer } from "./Footer";
+import Beams from "./Beams";
+import LightRays from "./LightRays";
 
 interface LayoutProps {
   children: ReactNode;
@@ -10,9 +11,17 @@ interface LayoutProps {
   description: string;
   keywords?: string;
   structuredData?: object;
+  background?: "beams" | "lightRays" | "none";
 }
 
-export const Layout = ({ children, title, description, keywords, structuredData }: LayoutProps) => {
+export const Layout = ({
+  children,
+  title,
+  description,
+  keywords,
+  structuredData,
+  background = "lightRays",
+}: LayoutProps) => {
   const fullTitle = `${title} | ABOH`;
   
   return (
@@ -42,19 +51,35 @@ export const Layout = ({ children, title, description, keywords, structuredData 
         )}
       </Helmet>
       
-      <div className="relative min-h-screen">
+      <div className="relative min-h-screen bg-slate-950 text-white">
         {/* Fixed Background */}
-        <div className="fixed inset-0 z-0">
-          <Beams
-            beamWidth={2}
-            beamHeight={15}
-            beamNumber={12}
-            lightColor="#0EA5E9"
-            speed={2}
-            noiseIntensity={1.75}
-            scale={0.2}
-            rotation={0}
-          />
+        <div className="fixed inset-0 z-0 bg-slate-950">
+          {background === "beams" && (
+            <Beams
+              beamWidth={2}
+              beamHeight={15}
+              beamNumber={12}
+              lightColor="#0EA5E9"
+              speed={2}
+              noiseIntensity={1.75}
+              scale={0.2}
+              rotation={0}
+            />
+          )}
+          {background === "lightRays" && (
+            <LightRays
+              raysOrigin="top-center"
+              raysColor="#00ffff"
+              raysSpeed={1.5}
+              lightSpread={0.8}
+              rayLength={1.2}
+              followMouse
+              mouseInfluence={0.1}
+              noiseAmount={0.1}
+              distortion={0.05}
+              className="opacity-90"
+            />
+          )}
         </div>
         
         {/* Content Layer */}
